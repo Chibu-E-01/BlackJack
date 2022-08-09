@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class BlackJack {
 	
 	public static void main(String[] args) {
-		System.out.println("Welcome to Blackjack via Java!");
+		System.out.println("Welcome to Blackjack via Java!\n");
 //		Creating a playing deck of 52 cards
 		Deck playingDeck = new Deck();
 		playingDeck.createFullDeck();
@@ -20,7 +20,14 @@ public class BlackJack {
 		Scanner input = new Scanner(System.in);
 		
 //		Game Loop
-		while (playerMoney > 0) { // While the player still has money, the game continues
+		while (playerMoney >= 0) {
+			System.out.print("Do you want to start the game? [1] Yes and [2] No.: ");
+			int startGame = input.nextInt();
+			if (playerMoney == 0) {
+				playerMoney = playerMoney + 500.00;
+			}
+			if (startGame == 1) {
+				while (playerMoney > 0) { // While the player still has money, the game continues
 			System.out.print("\nYou have $" + playerMoney + ". How much do you want to bet?: ");
 			double playerBet = input.nextDouble();
 			if (playerBet > playerMoney) {
@@ -114,7 +121,22 @@ public class BlackJack {
 			dealerDeck.moveAllToDeck(playingDeck);
 			System.out.println("\nEnd of Hand!");
 		}
-		System.out.println("\nGame over! You lost all your money lol >:)");
+			}
+			else if (startGame == 2){
+				System.out.println("\nGame over! Thank you for playing!\n");
+				break;
+			}
+			if (playerMoney <= 0) {
+				System.out.println("\nGame over! You lost all your money lol >:)\n");
+			}
+			else {
+				System.out.println("\nGame over!\n");
+			}
+				
+			
+		}
+		
+		
 		
 	}
 
