@@ -22,6 +22,7 @@ public class BlackJack {
 //		Game Loop
 		while (playerMoney >= 0) {
 			System.out.print("Do you want to start the game? [1] Yes and [2] No.: ");
+			playingDeck.shuffle();
 			int startGame = input.nextInt();
 			if (playerMoney == 0) {
 				playerMoney = playerMoney + 500.00;
